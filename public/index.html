@@ -15,23 +15,7 @@
     <img id="imagen" style="max-width:100%; display:none;" />
   </div>
 
-  <script>
-    document.getElementById('formulario').addEventListener('submit', async e => {
-      e.preventDefault();
-      const prompt = document.getElementById('prompt').value;
-
-      const res = await fetch('/generar-imagen', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt })
-      });
-      const data = await res.json();
-      if (data.imagen) {
-        const img = document.getElementById('imagen');
-        img.src = data.imagen;
-        img.style.display = 'block'; // Mostrar la imagen generada
-      }
-    });
-  </script>
+  <script src="main.js"></script>
+  
 </body>
 </html>
