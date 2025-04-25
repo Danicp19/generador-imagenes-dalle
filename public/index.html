@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Imágenes con DALL·E</title>
+</head>
+<body>
+  <h1>Generador de Imágenes con DALL·E</h1>
+  <form id="formulario">
+    <input type="text" id="prompt" placeholder="Describe la imagen..." required />
+    <button type="submit">Generar Imagen</button>
+  </form>
+  <div id="resultado">
+    <img id="imagen" style="max-width:100%; display:none;" />
+  </div>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', async e => {
+      e.preventDefault();
+      const prompt = document.getElementById('prompt').value;
+
+      const res = await fetch('/generar-imagen', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      if (data.imagen) {
+        const img = document.getElementById('imagen');
+        img.src = data.imagen;
+        img.style.display = 'block'; // Mostrar la imagen generada
+      }
+    });
+  </script>
+</body>
+</html>
