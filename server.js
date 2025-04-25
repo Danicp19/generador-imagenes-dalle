@@ -30,6 +30,5 @@ app.post('/generar-imagen', async (req, res) => {
   }
 });
 
-// Puerto donde se va a correr el servidor (Vercel usa 3000 de forma predeterminada)
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Servidor corriendo en puerto ${port}`));
+
+module.exports = app;
