@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -10,9 +9,11 @@ app.use(express.static('public'));
 app.post('/generar-imagen', async (req, res) => {
   const prompt = req.body.prompt;
   console.log('Prompt recibido:', prompt);
+
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt no recibido' });
   }
+
   try {
     const response = await axios.post('https://api.openai.com/v1/images/generations', {
       model: "dall-e-3",
@@ -33,5 +34,7 @@ app.post('/generar-imagen', async (req, res) => {
   }
 });
 
+// Configuración del puerto
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Servidor corriendo en puerto ${port}`));
 
-module.exports = app;
