@@ -18,7 +18,7 @@ app.post('/generar-imagen', async (req, res) => {
       size: "1024x1024"
     }, {
       headers: {
-        'Authorization': `Bearer TU_API_KEY`,
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json'
       }
     });
