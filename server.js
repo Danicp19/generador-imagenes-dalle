@@ -4,7 +4,7 @@ const axios = require('axios');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('public')); // Para servir archivos estáticos (html, css, js)
+app.use(express.static('public'));
 
 // Ruta para generar la imagen
 app.post('/generar-imagen', async (req, res) => {
@@ -28,7 +28,7 @@ app.post('/generar-imagen', async (req, res) => {
 
     res.json({ imagen: response.data.data[0].url });
   } catch (error) {
-    console.error('Error al generar imagen:', error.response?.data || error.message);
+    console.error(error.response?.data || error.message);
     res.status(500).send('Error al generar la imagen.');
   }
 });
