@@ -1,11 +1,7 @@
 {
   "name": "generador-imagenes-dalle",
   "version": "1.0.0",
-  "scripts": {
-    "start": "vercel start",
-    "build": "vercel build"
 
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
